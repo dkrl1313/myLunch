@@ -1,9 +1,9 @@
-package com.kakao.local.api.dao;
+package com.kakao.local.domain;
 
 import lombok.Data;
 
 @Data
-public class responseVO {
+public class ResponseVO {
 
     private String status;
     private String data;

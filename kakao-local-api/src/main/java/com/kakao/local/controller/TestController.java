@@ -1,34 +1,28 @@
-package com.kakao.local.api.controller;
+package com.kakao.local.controller;
 
-import com.kakao.local.api.dao.responseVO;
+import com.kakao.local.domain.ResponseVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value="/")
-public class testController {
+public class TestController {
 
-	private static final Logger logger = LoggerFactory.getLogger(testController.class);
+	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
 	private static final String REST_API_KEY = "KakaoAK 60d55acefee456b6abba9ee400a78b54";
 
 
@@ -40,7 +34,7 @@ public class testController {
 			, @RequestParam("yLat") double yLat) {
 		logger.info("callKaKaoLocalApi controller");
 
-		responseVO responseVO = new responseVO();
+		ResponseVO responseVO = new ResponseVO();
 
 		final String url = "https://dapi.kakao.com/v2/local/search/keyword.json";
 
