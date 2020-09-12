@@ -31,28 +31,32 @@ public class SearchKeywordService {
 
         // Set Param
         UriComponentsBuilder builder = null;
-        try {
-            builder = UriComponentsBuilder.fromHttpUrl(REST_API_URL)
-                    .queryParam("page", 5)
-                    .queryParam("size", 15)
-                    .queryParam("sort", "accuracy")
-                    .queryParam("query", URLEncoder.encode("맛집", "UTF-8"))
-                    .queryParam("category_group_code", "FD6")
-                    .queryParam("x", xLng)
-                    .queryParam("y", yLat)
-                    .queryParam("radius", "500");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
+            
+        builder = UriComponentsBuilder
+				.fromHttpUrl(REST_API_URL)
+		        .queryParam("page", 5)
+		        .queryParam("size", 15)
+		        .queryParam("sort", "accuracy")
+		        .queryParam("category_group_code", "FD6")
+		        .queryParam("x", xLng)
+		        .queryParam("y", yLat)
+		        .queryParam("radius", "500");
+        
         // Create a new HttpEntity
         final HttpEntity<String> entity = new HttpEntity<String>(headers);
+        
+        ParameterizedTypeReference<Map<String, Object>> typeRef = new ParameterizedTypeReference<Map<String, Object>>() {};
 
-        ResponseEntity<Map> response = restTemplate.exchange(builder.encode().toUriString(),
-                HttpMethod.GET,
-                entity,
-                Map.class);
-
+        // 한글 
+        uri = builder.encode().toUriString() + "&query=" + query;
+//        log.info(uri);
+        
+        ResponseEntity<Map<String, Object>> response = restTemplate.exchange(
+        		uri,
+				HttpMethod.GET,
+				entity,
+				typeRef);
+        
         return response;
     }
 }
