@@ -19,7 +19,7 @@ import java.util.Map;
 @Slf4j
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping(value="/")
+@RequestMapping(value="/api")
 public class TestController {
 
 	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
@@ -71,5 +71,10 @@ public class TestController {
 
 		System.out.println(response);
 		return response;
+	}
+
+	@RequestMapping(value="/test", method = RequestMethod.GET)
+	public String test(){
+		return "test";
 	}
 }
