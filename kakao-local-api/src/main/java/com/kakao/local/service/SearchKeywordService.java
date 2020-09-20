@@ -1,8 +1,7 @@
 package com.kakao.local.service;
 
+import com.kakao.local.domain.ResponseVO;
 import lombok.extern.slf4j.Slf4j;
-
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -11,7 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Map;
 
 @Slf4j
@@ -21,10 +21,8 @@ public class SearchKeywordService {
     private static final String REST_API_KEY = "KakaoAK 60d55acefee456b6abba9ee400a78b54";
     private static final String REST_API_URL = "https://dapi.kakao.com/v2/local/search/keyword.json";
 
-    // TODO: 파라미터들 다 지정할 수 있게 할건지 
-	public ResponseEntity<Map<String, Object>> callKaKaoLocalApi(double xLng, double yLat, String query) {
+    public ResponseEntity<Map> callKaKaoLocalApi(double xLng, double yLat) {
 
-		String uri;
         RestTemplate restTemplate = new RestTemplate();
 
         // Set Headers
@@ -33,6 +31,7 @@ public class SearchKeywordService {
 
         // Set Param
         UriComponentsBuilder builder = null;
+            
         builder = UriComponentsBuilder
 				.fromHttpUrl(REST_API_URL)
 		        .queryParam("page", 5)
