@@ -20,7 +20,10 @@ public class ApiTest {
         double xLng = 126.87880659999999;
         double yLng = 37.4730911;
 
-        ResponseEntity<Map> responseEntity =  searchKeywordService.callKaKaoLocalApi(xLng, yLng);
-        log.info(responseEntity.toString());
+        ResponseEntity<Map<String, Object>> responseEntity = searchKeywordService.callKaKaoLocalApi(xLng, yLng, "맛집");
+        log.info(responseEntity.getStatusCode().toString());
+        log.info(responseEntity.getBody().get("documents").toString());
+        
+        // git test~~~
     }
 }
