@@ -1,10 +1,12 @@
 package com.kakao.local.domain;
 
+import java.util.Map;
+
 import lombok.Data;
 
 @Data
 public class ResponseVO {
 
-    private String status;
-    private String data;
+    private Object status;
+    private Object documents;
 }

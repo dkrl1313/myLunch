@@ -2,6 +2,9 @@ package com.kakao.local.service;
 
 import lombok.extern.slf4j.Slf4j;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -11,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.kakao.local.domain.ResponseVO;
 
 import java.util.Map;
 
@@ -21,8 +25,9 @@ public class SearchKeywordService {
     private static final String REST_API_KEY = "KakaoAK 60d55acefee456b6abba9ee400a78b54";
     private static final String REST_API_URL = "https://dapi.kakao.com/v2/local/search/keyword.json";
 
-    // TODO: 파라미터들 다 지정할 수 있게 할건지 
-	public ResponseEntity<Map<String, Object>> callKaKaoLocalApi(double xLng, double yLat, String query) {
+	public ResponseVO callKaKaoLocalApi(
+			double xLng, double yLat, String query,
+			Integer page, Integer size, String sort, String cateCode, String rad ) {
 
 		String uri;
         RestTemplate restTemplate = new RestTemplate();
@@ -35,13 +40,13 @@ public class SearchKeywordService {
         UriComponentsBuilder builder = null;
         builder = UriComponentsBuilder
 				.fromHttpUrl(REST_API_URL)
-		        .queryParam("page", 5)
-		        .queryParam("size", 15)
-		        .queryParam("sort", "accuracy")
-		        .queryParam("category_group_code", "FD6")
+		        .queryParam("page", page)
+		        .queryParam("size", size)
+		        .queryParam("sort", sort)
+		        .queryParam("category_group_code", cateCode)
 		        .queryParam("x", xLng)
 		        .queryParam("y", yLat)
-		        .queryParam("radius", "500");
+		        .queryParam("radius", rad);
         
         // Create a new HttpEntity
         final HttpEntity<String> entity = new HttpEntity<String>(headers);
@@ -52,12 +57,18 @@ public class SearchKeywordService {
         uri = builder.encode().toUriString() + "&query=" + query;
 //        log.info(uri);
         
-        ResponseEntity<Map<String, Object>> response = restTemplate.exchange(
+        ResponseEntity<ResponseVO> response = restTemplate.exchange(
         		uri,
 				HttpMethod.GET,
 				entity,
-				typeRef);
+				ResponseVO.class);
         
-        return response;
+        ResponseVO res = new ResponseVO();
+        res.setStatus(response.getStatusCode().toString());
+        res.setDocuments(response.getBody().getDocuments());
+        
+         
+        return res;
     }
 }
+
