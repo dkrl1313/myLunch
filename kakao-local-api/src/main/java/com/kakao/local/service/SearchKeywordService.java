@@ -2,10 +2,6 @@ package com.kakao.local.service;
 
 import lombok.extern.slf4j.Slf4j;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -16,7 +12,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.kakao.local.domain.ResponseVO;
 
-import java.util.Map;
 
 @Slf4j
 @Service
@@ -51,7 +46,7 @@ public class SearchKeywordService {
         // Create a new HttpEntity
         final HttpEntity<String> entity = new HttpEntity<String>(headers);
         
-        ParameterizedTypeReference<Map<String, Object>> typeRef = new ParameterizedTypeReference<Map<String, Object>>() {};
+//        ParameterizedTypeReference<Map<String, Object>> typeRef = new ParameterizedTypeReference<Map<String, Object>>() {};
 
         // 한글 
         uri = builder.encode().toUriString() + "&query=" + query;

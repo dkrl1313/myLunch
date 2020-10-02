@@ -1,7 +1,5 @@
 package com.kakao.local.domain;
 
-import java.util.Map;
-
 import lombok.Data;
 
 @Data
