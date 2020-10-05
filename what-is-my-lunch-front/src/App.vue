@@ -11,7 +11,7 @@
 <script>
 import Loading from "@/components/common/Loading";
 import { mapState } from "vuex";
-import axios from "axios";
+// import axios from "axios";
 
 export default {
     name: "App",
@@ -21,9 +21,9 @@ export default {
     },
 
     created: function() {
-        axios.get("/api/test").then(result => {
-            console.log(result);
-        });
+        // axios.get("/api/kakao/").then(result => {
+        //     console.log(result);
+        // });
     },
 
     computed: mapState({

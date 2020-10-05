@@ -1,0 +1,24 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+@font-face {
+ font-family: 'Godo';
+ font-style: normal;
+  font-weight: 300;
+ src:  url(../font/GodoM.woff2) format('woff2'),
+       url(../font/GodoM.woff) format('woff'),
+       url(../font/GodoM.otf) format('opentype'),
+	   url(../font/GodoM.eot) format('eot');
+
+ }
+
+@font-face {
+ font-family: 'Godo';
+ font-style: normal;
+  font-weight: 700;
+ src:  url(../font/GodoB0.woff2) format('woff2'),
+       url(../font/GodoB0.woff) format('woff'),
+       url(../font/GodoB0.otf) format('opentype'),
+	   url(../font/GodoB0.eot) format('eot');
+ }
