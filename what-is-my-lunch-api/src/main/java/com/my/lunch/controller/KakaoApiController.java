@@ -14,14 +14,14 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping(value="/kakao")
+@RequestMapping(value="/api")
 public class KakaoApiController {
 	
 	@Autowired
     private SearchKeywordService searchKeywordService;
 
 	@ResponseBody
-	@RequestMapping(value = "/", method=RequestMethod.GET)
+	@RequestMapping(value = "/kakao", method=RequestMethod.GET)
 	public ResponseVO mainList(
 			@RequestParam(value="xLng") double xLng, 
 			@RequestParam(value="yLat") double yLat, 
