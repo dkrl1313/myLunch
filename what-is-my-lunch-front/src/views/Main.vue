@@ -26,19 +26,21 @@
         <div id="ex1" class="modal" v-show="isShow">
             <div class="modal_tit_box">
                 <h2>오늘의 식사는!</h2>
-                <p>{{ textContent }}</p>
+                <!-- <p>{{ textContent }}</p> -->
             </div>
-            <!-- <div class="modal_con_box">
-                <p>송파점</p>
-                <p class="txt_red">청년다방</p>
-                <div>
-                    <span><i class="la la-crosshairs"></i>500M</span>
-                    <span><i class="la la-cutlery"></i>분식</span>
+            <div class="modla_con_box">
+                <!-- <p class="res_point">송파점</p> -->
+                <p class="res_name txt_red"> {{ place_name }} </p>
+                <div class="res_info">
+                    <span><i class="la la-crosshairs"></i> {{ distance }} </span>
+                    <span><i class="la la-cutlery"></i> {{ category_name }} </span>
                 </div>
-            </div> -->
+            </div>
             <div class="modal_btn_box">
-                <a><button class="" @click="toggleModal">싫어요</button></a>
-                <a><button class="" @click="toggleModal">좋아요</button></a>
+                <!-- <button class="wh_btn w_40"><a href="#" rel="modal:close">싫어요!</a></button>
+                <button class="red_btn w_50"><a href="sub_001.html" >좋아요!</a></button> -->
+                <a><button class="wh_btn w_40" @click="toggleModal">싫어요!</button></a>
+                <a><button class="red_btn w_50" @click="toggleModal">좋아요!</button></a>
             </div>
 
         </div>
@@ -62,12 +64,23 @@
                 errorStr: null,
                 textContent: null,
                 api: "",
-                isShow: false
+                isShow: false,
+                status: '',
+                documents: [],
+                place_name: '',
+                address_name: '',
+                distance: '',
+                category_name:''
+                
             };
         },
         methods: {
 
-            // 위치찾기 btn click event
+            toggleModal() {
+                // if (!this.isShow) this.callKakaoApi();
+                this.isShow = !this.isShow;
+            },
+
             findLocation() {
                 // var kakaoGeocoder = new kakao.maps.services.Geocoder();
 
@@ -104,13 +117,12 @@
             },
             callKakaoApi() {
 
-                // this.findLocation();
-
                 // localhost:8080/kakao/?
                 // xLng=126.87880659999999&yLat=37.4730911&page=5&size=15&
                 // sort=accuracy&cateCode=FD6&rad=500&query=맛집 
 
                 var vm = this;
+                var ranNum = Math.floor(Math.random()*(16));
 
                 axios({
                     method: "GET",
@@ -125,15 +137,18 @@
                         query: "맛집"
                     }
                 }).then((res) => {
-                    console.log(res);
-                        vm.textContent = res;
+                    vm.status = res.data.status;
+                    vm.documents = res.data.documents[ranNum];
+                    vm.address_name = vm.documents.address_name;
+                    vm.place_name = vm.documents.place_name;
+                    vm.category_name = vm.documents.category_name;
+                    vm.distance = vm.documents.distance + 'M';
+
                 }).catch((e) => {
                     console.log("ERR: ", e);
                 })
             },
-            toggleModal() {
-                this.isShow = !this.isShow;
-            }
+            
         },
         mounted() {}
     };

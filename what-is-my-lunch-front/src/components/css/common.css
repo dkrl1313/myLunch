@@ -38,6 +38,13 @@ textarea{width:100%; border: 1px solid #E8E9EC;resize: none; outline:none;}
 
 h2 {font-size:24px;}
 
+/*width*/
+.width_120{display:inline-block; width:120px;}
+.width_150{display:inline-block; width:150px;}
+
+.w_30{display:inline-block; width:30%;}
+.w_40{display:inline-block; width:40%;}
+.w_50{display:inline-block; width:50%;}
 
 /*animation*/
 .wobble-hor-bottom {
