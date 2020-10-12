@@ -20,6 +20,7 @@ public class KakaoApiController {
 	@Autowired
     private SearchKeywordService searchKeywordService;
 
+	//TODO: Response Exception
 	@ResponseBody
 	@RequestMapping(value = "/kakao", method=RequestMethod.GET)
 	public ResponseVO mainList(

@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class ResponseVO {
 
-    private Object status;
+    private String status;
     private Object documents;
 }
