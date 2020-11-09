@@ -23,13 +23,12 @@
             </div>
         </div>
 
+        <!-- 
         <div id="ex1" class="modal" v-show="isShow">
             <div class="modal_tit_box">
                 <h2>오늘의 식사는!</h2>
-                <!-- <p>{{ textContent }}</p> -->
             </div>
             <div class="modla_con_box">
-                <!-- <p class="res_point">송파점</p> -->
                 <p class="res_name txt_red"> {{ place_name }} </p>
                 <div class="res_info">
                     <span><i class="la la-crosshairs"></i> {{ distance }} </span>
@@ -37,123 +36,125 @@
                 </div>
             </div>
             <div class="modal_btn_box">
-                <!-- <button class="wh_btn w_40"><a href="#" rel="modal:close">싫어요!</a></button>
-                <button class="red_btn w_50"><a href="sub_001.html" >좋아요!</a></button> -->
                 <a><button class="wh_btn w_40" @click="toggleModal">싫어요!</button></a>
                 <a><button class="red_btn w_50" @click="toggleModal">좋아요!</button></a>
             </div>
 
-        </div>
+        </div> -->
 
+        <modal :data="data" @callKakaoApi="callKakaoApi"></modal>
     </div>
 </template>
-<script src="../components/js/jquery.min.js"></script>
-<script src="../components/js/jquery.modal.min.js"></script>
+
 <script>
-    import axios from "axios";
+import axios from "axios";
+import Modal from "./Modal";
 
-    export default {
-        created() {
-            this.findLocation();
-            
+export default {
+    name: "Main",
+
+    components: {
+        Modal
+    },
+
+    created() {
+        this.findLocation();
+    },
+    data() {
+        return {
+            latitude: "",
+            longitude: "",
+            errorStr: null,
+            textContent: null,
+            api: "",
+            isShow: false,  
+            documents: [],
+            status: "",
+            data: {
+                place_name: "",
+                address_name: "",
+                distance: "",
+                category_name: ""
+            }
+        };
+    },
+    methods: {
+        toggleModal() {
+            // if (!this.isShow) this.callKakaoApi();
+            this.isShow = !this.isShow;
         },
-        data() {
-            return {
-                latitude: "",
-                longitude: "",
-                errorStr: null,
-                textContent: null,
-                api: "",
-                isShow: false,
-                status: '',
-                documents: [],
-                place_name: '',
-                address_name: '',
-                distance: '',
-                category_name:''
-                
-            };
-        },
-        methods: {
 
-            toggleModal() {
-                // if (!this.isShow) this.callKakaoApi();
-                this.isShow = !this.isShow;
-            },
+        findLocation() {
+            // var kakaoGeocoder = new kakao.maps.services.Geocoder();
 
-            findLocation() {
-                // var kakaoGeocoder = new kakao.maps.services.Geocoder();
+            if (!("geolocation" in navigator)) {
+                this.textContent = "Geolocation is not available.";
+                return;
+            }
+            this.textContent = "Locating...";
+            // this.gettingLocation = true;
 
-                if (!("geolocation" in navigator)) {
-                    this.textContent = "Geolocation is not available.";
-                    return;
+            // var me = this;
+            // this.$store.commit("changeIsLoading", true);
+            // get position
+            navigator.geolocation.getCurrentPosition(
+                pos => {
+                    // this.$store.commit("changeIsLoading", false);
+                    // this.gettingLocation = false;
+                    this.latitude = pos.coords.latitude;
+                    this.longitude = pos.coords.longitude;
+                    this.textContent =
+                        "lat: " + this.latitude + ", lng: " + this.longitude;
+
+                    this.callKakaoApi();
+                },
+                err => {
+                    // this.$store.commit("changeIsLoading", false);
+                    // this.gettingLocation = false;
+                    this.textContent = err.message;
                 }
-                this.textContent = "Locating...";
-                // this.gettingLocation = true;
+            );
+        },
+        callKakaoApi() {
+            // localhost:8080/kakao/?
+            // xLng=126.87880659999999&yLat=37.4730911&page=5&size=15&
+            // sort=accuracy&cateCode=FD6&rad=500&query=맛집
+            console.log("call")
+            var vm = this;
+            var ranNum = Math.floor(Math.random() * 16);
 
-                // var me = this;
-                this.$store.commit("changeIsLoading", true);
-                // get position
-                navigator.geolocation.getCurrentPosition(
-                    pos => {
-                        this.$store.commit("changeIsLoading", false);
-                        // this.gettingLocation = false;
-                        this.latitude = pos.coords.latitude;
-                        this.longitude = pos.coords.longitude;
-                        this.textContent =
-                            "lat: " +
-                            this.latitude +
-                            ", lng: " +
-                            this.longitude;
-
-                        this.callKakaoApi();
-                    },
-                    err => {
-                        this.$store.commit("changeIsLoading", false);
-                        // this.gettingLocation = false;
-                        this.textContent = err.message;
-                    }
-                );
-            },
-            callKakaoApi() {
-
-                // localhost:8080/kakao/?
-                // xLng=126.87880659999999&yLat=37.4730911&page=5&size=15&
-                // sort=accuracy&cateCode=FD6&rad=500&query=맛집 
-
-                var vm = this;
-                var ranNum = Math.floor(Math.random()*(16));
-
-                axios({
-                    method: "GET",
-                    url: '/api/kakao/',
-                    params : {
-                        xLng: vm.longitude,
-                        yLat: vm.latitude,
-                        page: 5, size: 15,
-                        sort: "accuracy",
-                        cateCode: "FD6",
-                        rad: "500",
-                        query: "맛집"
-                    }
-                }).then((res) => {
+            axios({
+                method: "GET",
+                url: "/api/kakao/",
+                params: {
+                    xLng: vm.longitude,
+                    yLat: vm.latitude,
+                    page: 5,
+                    size: 15,
+                    sort: "accuracy",
+                    cateCode: "FD6",
+                    rad: "500",
+                    query: "맛집"
+                }
+            })
+                .then(res => {
                     vm.status = res.data.status;
                     vm.documents = res.data.documents[ranNum];
-                    vm.address_name = vm.documents.address_name;
-                    vm.place_name = vm.documents.place_name;
-                    vm.category_name = vm.documents.category_name;
-                    vm.distance = vm.documents.distance + 'M';
-
-                }).catch((e) => {
-                    console.log("ERR: ", e);
+                    vm.data.address_name = vm.documents.address_name;
+                    vm.data.place_name = vm.documents.place_name;
+                    vm.data.category_name = vm.documents.category_name;
+                    vm.data.distance = vm.documents.distance + "M";
+                    console.log(res)
                 })
-            },
-            
-        },
-        mounted() {}
-    };
+                .catch(e => {
+                    console.log("ERR: ", e);
+                });
+        }
+    },
+    mounted() {}
+};
 </script>
 
 <style scoped>
-    @import '../components/css/layout.css';
+@import "../components/css/layout.css";
 </style>

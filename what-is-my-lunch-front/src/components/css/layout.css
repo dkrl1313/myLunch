@@ -5,78 +5,400 @@
 @import url("common.css");
 
 /* Reset */
-*{ box-sizing: border-box; user-select: none; }
-html,body{width:100%;height:100%}
-html{overflow-y:scroll;}
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,form,fieldset,p,button,textarea{font-family:'Godo', sans-serif;  margin:0;padding:0; word-break:break-all; word-break:keep-all;font-weight:normal; }
-body,input,button{font-size:12px; color:#333;}
-body{background-color:#f7f7f7;text-align:center;*word-break:break-all;-ms-word-break:break-all}
-img,fieldset,iframe{border:0 none}
-li{list-style:none}
-input,select,button{outline:none;border:none ;}
-input{text-indent:8px;}
-i,em,address{font-style:normal}
-label,button{cursor:pointer}
-button{margin:0;padding:0;}
-a{text-decoration:none; }
-a:hover{text-decoration:none; outline:none !important;}
-a:focus{text-decoration:none; outline:none !important;}
-button *{position:relative; outline:none !important;}
-button img{*left:auto}
-option{padding-right:6px}
-table{border-collapse:collapse;border-spacing:0}
-input::-ms-clear{display:none}
-canvas {-moz-user-select: none;-webkit-user-select: none;-ms-user-select: none;}
-svg{width:100%;}
-textarea{width:100%; border: 1px solid #E8E9EC;resize: none; outline:none;}
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+html {
+    overflow-y: scroll;
+}
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+form,
+fieldset,
+p,
+button,
+textarea {
+    font-family: "Godo", sans-serif;
+    margin: 0;
+    padding: 0;
+    word-break: break-all;
+    word-break: keep-all;
+    font-weight: normal;
+}
+body,
+input,
+button {
+    font-size: 12px;
+    color: #333;
+}
+body {
+    background-color: #f7f7f7;
+    text-align: center;
+    *word-break: break-all;
+    -ms-word-break: break-all;
+}
+img,
+fieldset,
+iframe {
+    border: 0 none;
+}
+li {
+    list-style: none;
+}
+input,
+select,
+button {
+    outline: none;
+    border: none;
+}
+input {
+    text-indent: 8px;
+}
+i,
+em,
+address {
+    font-style: normal;
+}
+label,
+button {
+    cursor: pointer;
+}
+button {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+    outline: none !important;
+}
+a:focus {
+    text-decoration: none;
+    outline: none !important;
+}
+button * {
+    position: relative;
+    outline: none !important;
+}
+button img {
+    *left: auto;
+}
+option {
+    padding-right: 6px;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+input::-ms-clear {
+    display: none;
+}
+canvas {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+svg {
+    width: 100%;
+}
+textarea {
+    width: 100%;
+    border: 1px solid #e8e9ec;
+    resize: none;
+    outline: none;
+}
 
 /*layout*/
-.all_wrap{width:100%; height:100%;}
-.wrap{width:100%; height:100%;}
-.header_wrap{width:100%;}
-.header{width:100%;}
-.content_wrap{width:100%;height:100%;}
-.content{width:100%;}
-.footer_wrap{width:100%;}
+.all_wrap {
+    width: 100%;
+    height: 100%;
+}
+.wrap {
+    width: 100%;
+    height: 100%;
+}
+.header_wrap {
+    width: 100%;
+}
+.header {
+    width: 100%;
+}
+.content_wrap {
+    width: 100%;
+    height: 100%;
+    /* margin: 0px auto; */
+}
+.content {
+    width: 100%;
+}
+.footer_wrap {
+    width: 100%;
+}
 
 /*main*/
-.main_tit{padding:80px 0 50px 50px; text-align:left; font-size:50px; font-weight:bold;background:url(../images/ic_dish.png) no-repeat; background-position:90px 40px;background-size:300px auto;}
-.main_con p{font-size:20px; font-weight:bold;margin-bottom:20px;}
-.main_btn_box{background:url(../images/ic_food.png) no-repeat; background-position:center;}
+.main_tit {
+    padding: 80px 0 50px 50px;
+    text-align: left;
+    font-size: 50px;
+    font-weight: bold;
+    background: url(../images/ic_dish.png) no-repeat;
+    background-position: 90px 40px;
+    background-size: 300px auto;
+}
+.main_con p {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.main_btn_box {
+    background: url(../images/ic_food.png) no-repeat;
+    background-position: center;
+}
 
 /*button*/
-.circle_box{display:inline-block; width:150px; height:150px; border-radius:50%; background:#EF5B5B; padding-top:10px; box-shadow:0 0 20px rgba(0, 0, 0, .4); margin:0 10px;}
-.random_btn{width:130px; height:130px; border-radius:50%; border:2px solid #FCC5CD; background:#EF5B5B;  font-size:30px; font-weight:bold; color:#fff;}
+.circle_box {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #ef5b5b;
+    padding-top: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    margin: 0 10px;
+}
+.random_btn {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 2px solid #fcc5cd;
+    background: #ef5b5b;
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+}
 
-.wh_btn{border:1px solid #F73D56; background:#fff;}
-.wh_btn a{color:#F73D56;}
-.red_btn{ background:#F73D56;}
-.red_btn a{ color:#fff;}
+.wh_btn {
+    border: 1px solid #f73d56;
+    background: #fff;
+}
+.wh_btn a {
+    color: #f73d56;
+}
+.red_btn {
+    background: #f73d56;
+}
+.red_btn a {
+    color: #fff;
+}
 
 /*상세정보 팝업_오버레이*/
-.blocker{position:fixed;top:0;right:0;bottom:0;left:0;width:100%;height:100%;overflow:auto;z-index:1;padding:20px;box-sizing:border-box;background-color:#000;background-color:rgba(0,0,0,0.75);text-align:center}
-.blocker:before{content:"";display:inline-block;height:100%;vertical-align:middle;margin-right:-0.05em}
-.blocker.behind{background-color:transparent}
-    
-.modal{ /*display:none;*/
-        vertical-align:middle;position:relative;z-index:2;max-width:500px;box-sizing:
-        border-box;width:90%;background:#fff;padding:20px;-webkit-border-radius:4px;-moz-border-radius:4px;-o-border-radius:4px;-ms-border-radius:4px;border-radius:4px;
-        -webkit-box-shadow:0 0 10px #000;-moz-box-shadow:0 0 10px #000;-o-box-shadow:0 0 10px #000;-ms-box-shadow:0 0 10px #000;box-shadow:0 0 10px #000;text-align:center;}
-.modal a.close-modal{display:none !important; position:absolute;top:-12.5px;right:-12.5px;display:block;width:30px;height:30px;border-radius:50%; background:#F73D56;}
-.modal a.close-modal:before{display:none; content: "\f342"; font-family:"LineAwesome"; color:#fff; position: absolute;top:4px; left:5px;font-size:20px;}
+.blocker {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    z-index: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.75);
+    text-align: center;
+}
+.blocker:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.05em;
+}
+.blocker.behind {
+    background-color: transparent;
+}
 
-.modal_tit_box{margin-bottom:30px; color:#333;}
-.modal_tit_box h2{font-weight:bold;}
-.modla_con_box{margin-bottom:20px; }
-.res_point{font-size:14px; color:#4d4d4d;margin-bottom:12px;}
-.res_name{font-size:34px; margin-bottom:20px;font-weight:bold;}
-.res_info{vertical-align: middle;}
-.res_info span{display:inline-block;font-size:12px; line-height:14px;}
-.res_info span:first-child{margin-right:40px;}
-.res_info span i{color:#F73D56;margin-right:8px;font-size:14px;vertical-align:middle;}
+.modal {
+    /*display:none;*/
+    vertical-align: middle;
+    position: relative;
+    z-index: 2;
+    max-width: 500px;
+    box-sizing: border-box;
+    width: 90%;
+    background: #fff;
+    padding: 20px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 0 10px #000;
+    -moz-box-shadow: 0 0 10px #000;
+    -o-box-shadow: 0 0 10px #000;
+    -ms-box-shadow: 0 0 10px #000;
+    box-shadow: 0 0 10px #000;
+    text-align: center;
+}
+.modal a.close-modal {
+    display: none !important;
+    position: absolute;
+    top: -12.5px;
+    right: -12.5px;
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #f73d56;
+}
+.modal a.close-modal:before {
+    display: none;
+    content: "\f342";
+    font-family: "LineAwesome";
+    color: #fff;
+    position: absolute;
+    top: 4px;
+    left: 5px;
+    font-size: 20px;
+}
 
-.modal_btn_box{position:absolute; bottom:-76px; left:0; width:100%; text-align: center;}
-.modal_btn_box button{box-sizing: border-box;text-align: center; font-size:18px; height:60px; border-radius: 30px;}
-.modal_btn_box button:first-child{margin-right:20px;}
-  
+.modal_tit_box {
+    margin-bottom: 30px;
+    color: #333;
+}
+.modal_tit_box h2 {
+    font-weight: bold;
+}
+.modla_con_box {
+    margin-bottom: 20px;
+}
+.res_point {
+    font-size: 14px;
+    color: #4d4d4d;
+    margin-bottom: 12px;
+}
+.res_name {
+    font-size: 34px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.res_info {
+    vertical-align: middle;
+}
+.res_info span {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 14px;
+}
+.res_info span:first-child {
+    margin-right: 40px;
+}
+.res_info span i {
+    color: #f73d56;
+    margin-right: 8px;
+    font-size: 14px;
+    vertical-align: middle;
+}
 
+.modal_btn_box {
+    /* position: absolute; */
+    bottom: -76px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+.modal_btn_box button {
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 18px;
+    height: 60px;
+    border-radius: 30px;
+}
+.modal_btn_box button:first-child {
+    margin-right: 20px;
+}
+
+/** vue modal **/
+.modal-mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: table;
+    transition: opacity 0.3s ease;
+}
+
+.modal-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.modal-container {
+    width: 300px;
+    margin: 0px auto;
+    padding: 20px 30px;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+    transition: all 0.3s ease;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.modal-header h3 {
+    margin-top: 0;
+    color: #42b983;
+}
+
+.modal-body {
+    margin: 20px 0;
+}
+
+.modal-default-button {
+    float: right;
+}
+
+/*
+       * The following styles are auto-applied to elements with
+       * transition="modal" when their visibility is toggled
+       * by Vue.js.
+       *
+       * You can easily play with the modal transition by editing
+       * these styles.
+       */
+
+.modal-enter {
+    opacity: 0;
+}
+
+.modal-leave-active {
+    opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave-active .modal-container {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
