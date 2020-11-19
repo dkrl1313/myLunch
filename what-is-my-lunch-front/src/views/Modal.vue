@@ -26,7 +26,7 @@
                                 <a>다시!</a>
                             </button>
                             <button class="red_btn w_40">
-                                <a href="sub_001.html">자세히</a>
+                                <a v-on:click="sub001">자세히</a>
                             </button>
                         </div>
                         <!-- </slot> -->
@@ -67,6 +67,9 @@ export default {
     methods: {
         callKakaoApi: function() {
             this.$emit('callKakaoApi');
+        },
+        sub001() {
+        this.$router.push('/sub001')
         }
     }
 };
