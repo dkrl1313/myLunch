@@ -42,7 +42,7 @@
 
         </div> -->
 
-        <modal :data="data" @callKakaoApi="callKakaoApi"></modal>
+        <modal :data="data" v-show="isShow" @callKakaoApi="callKakaoApi"></modal>
     </div>
 </template>
 
@@ -60,6 +60,7 @@ export default {
     created() {
         this.findLocation();
     },
+
     data() {
         return {
             latitude: "",
@@ -80,8 +81,8 @@ export default {
     },
     methods: {
         toggleModal() {
-            // if (!this.isShow) this.callKakaoApi();
             this.isShow = !this.isShow;
+            if (this.isShow) this.callKakaoApi();
         },
 
         findLocation() {
@@ -115,6 +116,7 @@ export default {
                 }
             );
         },
+        
         callKakaoApi() {
             // localhost:8080/kakao/?
             // xLng=126.87880659999999&yLat=37.4730911&page=5&size=15&

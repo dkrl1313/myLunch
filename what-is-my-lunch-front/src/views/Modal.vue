@@ -60,7 +60,9 @@
 export default {
     props: ['data'],
     data: function () {
-        return { local: this.data }
+        return { 
+            local: this.data,
+        }
     },
     methods: {
         callKakaoApi: function() {
