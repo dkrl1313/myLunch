@@ -25,8 +25,8 @@
                             <button class="wh_btn w_40" @click="callKakaoApi">
                                 <a>다시!</a>
                             </button>
-                            <button class="red_btn w_40">
-                                <a v-on:click="sub001">자세히</a>
+                            <button class="red_btn w_40" @click="openPlace">
+                                <a>자세히</a>
                             </button>
                         </div>
                         <!-- </slot> -->
@@ -68,8 +68,12 @@ export default {
         callKakaoApi: function() {
             this.$emit('callKakaoApi');
         },
-        sub001() {
-        this.$router.push('/sub001')
+
+        openPlace: function() {
+            window.open(
+                this.local.place_url,
+                '_blank' // <- This is what makes it open in a new window.
+            );
         }
     }
 };
