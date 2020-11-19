@@ -112,11 +112,11 @@ export default {
                 err => {
                     // this.$store.commit("changeIsLoading", false);
                     // this.gettingLocation = false;
-                    this.textContent = err.message;
+                    alert(this.textContent = err.message);
                 }
             );
         },
-        
+
         callKakaoApi() {
             // localhost:8080/kakao/?
             // xLng=126.87880659999999&yLat=37.4730911&page=5&size=15&

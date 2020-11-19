@@ -12,8 +12,8 @@
                     <div class="modal-body">
                         <slot name="body">
                             <p class="res_name txt_red">{{local.place_name}}</p>
-                            <div>
-                                <span><i class="la la-crosshairs"></i>{{local.distance}}</span><br>
+                            <div class="res_info">
+                                <span><i class="la la-crosshairs"></i>{{local.distance}}</span>
                                 <span><i class="la la-cutlery"></i>{{local.category_name}}</span>
                             </div>
                         </slot>
@@ -23,7 +23,7 @@
                         <!-- <slot name="footer"> -->
                         <div class="modal_btn_box">
                             <button class="wh_btn w_40" @click="callKakaoApi">
-                                <a>재선택</a>
+                                <a>다시!</a>
                             </button>
                             <button class="red_btn w_40">
                                 <a href="sub_001.html">자세히</a>
