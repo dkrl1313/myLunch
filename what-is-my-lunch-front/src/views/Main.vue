@@ -146,6 +146,7 @@ export default {
                     vm.data.place_name = vm.documents.place_name;
                     vm.data.category_name = vm.documents.category_name;
                     vm.data.distance = vm.documents.distance + "M";
+                    vm.data.place_url = vm.documents.place_url;
                     console.log(res)
                 })
                 .catch(e => {

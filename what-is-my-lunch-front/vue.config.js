@@ -9,6 +9,7 @@ module.exports = {
                 target: "http://localhost:8080"
             }
         },
-        port: process.env.VUE_APP_PORT || 3000
+        port: process.env.VUE_APP_PORT || 3000,
+        overlay: false
     }
 };
