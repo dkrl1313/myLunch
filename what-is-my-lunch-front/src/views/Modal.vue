@@ -2,7 +2,7 @@
     <transition name="modal">
         <div class="modal-mask" @mousedown="close">
             <div class="modal-wrapper">
-                <div class="modal-container">
+                <div class="modal-container" @mousedown.stop>
                     <div class="modal-header">
                         <slot name="header">
                             <h2>오늘의 식사는!</h2>
